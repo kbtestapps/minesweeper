@@ -1,0 +1,80 @@
+body{
+    background-image: url(../img/wood-texture.jpg);
+    margin-top: 3%;
+    margin-right: 3%;
+}
+
+.box{
+    min-width: 30px;
+    min-height: 30px;
+    background: rgb(170, 170, 170);
+    border:none;   
+    font-size: 18px;
+    -moz-box-shadow:    inset 0 0 1px #050505;
+    -webkit-box-shadow: inset 0 0 1px #050505;
+    box-shadow:         inset 0 0 1px #050505;
+}
+
+.box.val0{
+    background: rgb(240, 240, 240);
+}
+
+.box.val1{
+    color: rgb(133, 129, 51);
+    background: rgba(224, 210, 210, 0.24);
+}
+
+.box.val2{
+    color: rgb(165, 137, 48);
+    background: rgb(238, 215, 215);
+    text-shadow: 0px 1px white;
+}
+
+.box.val3{
+    color: white;
+    background: rgb(204, 71, 71);
+}
+
+.shadow
+{
+    background: rgb(235, 226, 226);
+  	display: inline-block;
+    margin-left: 7%;
+    padding: 10px;     
+    position: relative;
+    -webkit-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.shadow:before, .shadow:after
+{
+	content:"";
+    position:absolute; 
+    z-index:-1;
+    -webkit-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    -moz-box-shadow:0 0 20px rgba(0,0,0,0.8);
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    top:10px;
+    bottom:10px;
+    left:0;
+    right:0;
+    -moz-border-radius:100px / 10px;
+} 
+.shadow:after
+{
+	right:10px; 
+    left:auto;
+    -webkit-transform:skew(8deg) rotate(3deg); 
+       -moz-transform:skew(8deg) rotate(3deg);     
+        -ms-transform:skew(8deg) rotate(3deg);     
+         -o-transform:skew(8deg) rotate(3deg); 
+            transform:skew(8deg) rotate(3deg);
+}
+
+.title{
+    font-family: monospace;
+    font-size: 50px;
+    color: rgb(245, 239, 232);
+    text-shadow: 1px 1px rgb(7, 0, 0);
+    float: right;
+}
