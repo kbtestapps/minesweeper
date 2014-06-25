@@ -11,14 +11,19 @@ function GameCanvas() {
   this.columns = 20;
   this.fillFactor = 10;
   this.grid = [this.rows][this.columns];
+  this.noOfMines = 0;
+  this.noOfMinesFound = 0;    
 }
 
 GameCanvas.prototype.init = function () {
+    this.noOfMines = 0;
+    this.noOfMinesFound = 0;    
     this.grid = this.createGrid();
     $("#grid").html("");
     $("#grid").unbind();
     this.render();
     this.initEvents();
+    this.displayScoreCard();
 };
 
 GameCanvas.prototype.createGrid = function(){
@@ -27,7 +32,9 @@ GameCanvas.prototype.createGrid = function(){
       arr.push([]);
       arr[i].push( new Array(this.columns));
       for(var j=0; j < this.columns; j++){
-        arr[i][j] = new SquareBox(i, j, this.getMine());
+        var isMinedSuare = this.getMine();
+        this.noOfMines += isMinedSuare ? 1 : 0;  
+        arr[i][j] = new SquareBox(i, j, isMinedSuare);
       }
   }
   return arr;
@@ -73,7 +80,7 @@ GameCanvas.prototype.render = function () {
 GameCanvas.prototype.initEvents = function(){
     var me = this;
     $("#grid").on("mineUncovered", function(){
-        alert("Game Over");
+        alert("You stepped on bomb, Game Over buddy ...");
         me.init();
     });
     
@@ -94,9 +101,26 @@ GameCanvas.prototype.initEvents = function(){
         uncover(x+1,y+1);
     });
     
+    $("#grid").on("mineSet", function(){
+        me.noOfMinesFound++;
+        me.displayScoreCard();
+        if(me.noOfMinesFound === me.noOfMines){
+            alert("You won .. :) ");
+        }
+    });
+
+    $("#grid").on("mineUnset", function(){
+        me.noOfMinesFound--;
+        me.displayScoreCard();
+    });
+    
 };
 
 GameCanvas.prototype.isOutOfBounds = function(x, y){
     return x < 0 || y < 0 || x > this.rows - 1 || y > this.columns - 1;
+};
+
+GameCanvas.prototype.displayScoreCard = function(){
+    $("#scoreValue").text(this.noOfMinesFound+"/"+this.noOfMines);
 };
 
