@@ -9,7 +9,13 @@
 function GameCanvas() {
   this.rows = 20;
   this.columns = 20;
-  this.fillFactor = 10;
+  this.popupWidth = '500px';    
+  if($(window).width() < 800){
+    this.rows = 9;
+    this.columns = 9;
+    this.popupWidth = '200px';   
+  }
+  this.fillFactor = 20;
   this.grid = [this.rows][this.columns];
   this.noOfMines = 0;
   this.noOfMinesFound = 0;    
@@ -80,8 +86,11 @@ GameCanvas.prototype.render = function () {
 GameCanvas.prototype.initEvents = function(){
     var me = this;
     $("#grid").on("mineUncovered", function(){
-        alert("You stepped on bomb, Game Over buddy ...");
-        me.init();
+        me.blastAllMines();
+        setTimeout(function(){
+            new Messi('You stepped on bomb, You lost it buddy ... :( ', {title: 'Ooops ... ', width : me.popupWidth});
+            me.init();
+        },2000);
     });
     
     var uncover = function(x, y){
@@ -105,7 +114,7 @@ GameCanvas.prototype.initEvents = function(){
         me.noOfMinesFound++;
         me.displayScoreCard();
         if(me.noOfMinesFound === me.noOfMines){
-            alert("You won .. :) ");
+            new Messi('You nailed it, mission accomplished .. :) ', {title: 'Awesome ... ', width : me.popupWidth});
         }
     });
 
@@ -122,5 +131,16 @@ GameCanvas.prototype.isOutOfBounds = function(x, y){
 
 GameCanvas.prototype.displayScoreCard = function(){
     $("#scoreValue").text(this.noOfMinesFound+"/"+this.noOfMines);
+};
+
+GameCanvas.prototype.blastAllMines = function(){
+     for(var row = 0; row < this.rows; row++){
+        for(var col = 0; col < this.columns; col++){
+            var box = this.grid[row][col];
+            if(box.isMine()){
+                box.getElement().addClass("blast");
+            }
+        }
+    }
 };
 
