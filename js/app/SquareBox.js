@@ -13,6 +13,7 @@ function SquareBox(x, y, isMine) {
   this.mine = isMine;
   this.ele = this.getElement();
   this.displayed = false;
+  this.isMineSet = false;
 }
 
 SquareBox.prototype.isMine = function () {
@@ -30,18 +31,42 @@ SquareBox.prototype.getElement = function(){
         var ele = $(html);
         var me = this;
         ele.click(function(){
-            if(me.mine){
-                $("#grid").trigger("mineUncovered");
-            }else{
-                if(!me.displayed){
-                    me.displayed = true;
-                    $(this).addClass("val"+me.value);
-                    if(me.value === 0){
-                         $("#grid").trigger("uncoverBox", [me.x, me.y]);
-                    }else{
-                        $(this).text(me.value);
-                    }
+            var $this = $(this);
+            if ($this.hasClass('clicked')){
+                $this.removeClass('clicked'); 
+                if(me.isMineSet){
+                    me.isMineSet = false;
+                    ele.removeClass("mined");
+                    $("#grid").trigger("mineUnset");
+                }else if(!me.displayed){
+                    me.isMineSet = true;
+                    ele.addClass("mined");
+                    $("#grid").trigger("mineSet");
                 }
+                return;
+            }else{
+                $this.addClass('clicked');
+                setTimeout(function() {
+                    if($this.hasClass('clicked')){
+                        $this.removeClass('clicked');
+                        if(me.isMineSet){
+                            return;
+                        }
+                        if(me.mine){
+                            $("#grid").trigger("mineUncovered");
+                        }else{
+                            if(!me.displayed){
+                                me.displayed = true;
+                                $this.addClass("val"+me.value);
+                                if(me.value === 0){
+                                     $("#grid").trigger("uncoverBox", [me.x, me.y]);
+                                }else{
+                                    $this.text(me.value);
+                                }
+                            }
+                        }
+                    }
+                },300);
             }
         });
         return ele;
@@ -50,7 +75,7 @@ SquareBox.prototype.getElement = function(){
 };
 
 SquareBox.prototype.uncover = function(){
-    if(!this.displayed){
+    if(!this.displayed && !this.isMineSet){
         this.displayed = true;
         $(this.ele).addClass("val"+this.value);
         if(this.value===0){

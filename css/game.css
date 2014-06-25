@@ -32,7 +32,18 @@ body{
 
 .box.val3{
     color: white;
-    background: rgb(204, 71, 71);
+    background: rgb(202, 85, 85);
+}
+
+.box.val4{
+    color: rgb(255, 255, 255);
+    background: rgb(134, 0, 0);
+    text-shadow: 0px 1px white;
+}
+
+.box.mined{
+    background: url('../img/mine.jpeg');
+    background-size: 100%;
 }
 
 .shadow
@@ -76,5 +87,22 @@ body{
     font-size: 50px;
     color: rgb(245, 239, 232);
     text-shadow: 1px 1px rgb(7, 0, 0);
-    float: right;
+}
+.dashboard {
+     float: right;
+}
+
+.score {
+    font-family: fantasy;
+    font-size: 38px;
+    color: rgb(245, 239, 232);
+    text-shadow: 1px 1px rgb(7, 0, 0);
+}
+
+#scoreValue {
+    font-family: fantasy;
+    font-size: 38px;
+    color: rgb(245, 239, 232);
+    text-shadow: 1px 1px rgb(7, 0, 0);
+    display: inline;
 }
