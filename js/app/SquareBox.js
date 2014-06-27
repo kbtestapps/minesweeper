@@ -16,6 +16,10 @@ function SquareBox(x, y, isMine) {
   this.isMineSet = false;
 }
 
+SquareBox.prototype.isOpen = function () {
+	return this.displayed || this.isMineSet;
+};
+
 SquareBox.prototype.isMine = function () {
 	return this.mine;
 };
@@ -30,48 +34,47 @@ SquareBox.prototype.getElement = function(){
         var html = template({ mine: this.mine });
         var ele = $(html);
         var me = this;
-        ele.click(function(){
+        $(ele).bind('contextmenu.squareBox', function(e) {
+            e.preventDefault();
+            if(me.isMineSet){
+                me.isMineSet = false;
+                ele.removeClass("mined");
+                $("#grid").trigger("mineUnset");
+            }else if(!me.displayed){
+                me.isMineSet = true;
+                ele.addClass("mined");
+                $("#grid").trigger("mineSet");
+            }
+        });
+        
+        ele.bind('click.squareBox', function(){
             var $this = $(this);
-            if ($this.hasClass('clicked')){
-                $this.removeClass('clicked'); 
-                if(me.isMineSet){
-                    me.isMineSet = false;
-                    ele.removeClass("mined");
-                    $("#grid").trigger("mineUnset");
-                }else if(!me.displayed){
-                    me.isMineSet = true;
-                    ele.addClass("mined");
-                    $("#grid").trigger("mineSet");
-                }
+            if(me.isMineSet){
                 return;
+            }
+            if(me.mine){
+                $("#grid").trigger("mineTouched");
             }else{
-                $this.addClass('clicked');
-                setTimeout(function() {
-                    if($this.hasClass('clicked')){
-                        $this.removeClass('clicked');
-                        if(me.isMineSet){
-                            return;
-                        }
-                        if(me.mine){
-                            $("#grid").trigger("mineUncovered");
-                        }else{
-                            if(!me.displayed){
-                                me.displayed = true;
-                                $this.addClass("val"+me.value);
-                                if(me.value === 0){
-                                     $("#grid").trigger("uncoverBox", [me.x, me.y]);
-                                }else{
-                                    $this.text(me.value);
-                                }
-                            }
-                        }
+                if(!me.displayed){
+                    me.displayed = true;
+                    $this.addClass("val"+me.value);
+                    if(me.value === 0){
+                         $("#grid").trigger("uncoverBox", [me.x, me.y]);
+                    }else{
+                        $this.text(me.value);
                     }
-                },300);
+                }
             }
         });
         return ele;
     }
     return this.ele;
+};
+
+SquareBox.prototype.blast = function(){
+    if(this.isMine()){
+        this.ele.addClass("blast");
+    }
 };
 
 SquareBox.prototype.uncover = function(){
