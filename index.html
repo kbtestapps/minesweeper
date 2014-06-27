@@ -1,46 +1,101 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Minesweeper</title>
-        <meta name="description" content="Minesweeper Javascript prototype, Kiran Bagul, ADP, CISCO, UST Global">
-        <meta name="viewport" content="width=device-width">
-        <link href="css/game.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/messi.min.css" />
-    </head>
-    <body>
-        <div class="container">
-            <div class="dashboard">
-                <div class="title">Minesweeper</div><br>
-                <span class="score scoreFont scoreText">Score : </span><span id="scoreValue" class="score scoreValue scoreFont"></span>
-                <div class="restart">Restart</div>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Minesweeper</title>
+    <meta name="description" content="Minesweeper Javascript prototype, Kiran Bagul, ADP, CISCO, UST Global">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css">
+    <link rel="stylesheet" href="css/messi.min.css" />
+    <link href="css/game.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="dashboard">
+            <div class="title">Minesweeper</div>
+            <br>
+            <div id="progress"></div>
+            <div id="timer"></div>
+            <div id="controls">
+                <div class="controlButton play"></div>
+                <div class="controlButton pause"></div>
+                <div class="controlButton restart"></div>
             </div>
-            <div id="grid" class="shadow"></div>
+            <div id="sizeControl">
+                <div class="sizeCircle small"></div>
+                <div class="sizeCircle medium"></div>
+                <div class="sizeCircle large"></div>
+            </div>
         </div>
-        <script src="js/lib/jquery-1.11.1.min.js"></script>
-        <script src="js/lib/underscore.js"></script>
-        <script src="js/app/Canvas.js"></script>
-        <script src="js/app/SquareBox.js"></script>
-        <script src="js/lib/messi.min.js"></script>
-        <script type='text/javascript'>
-            $(function(){
-                function init(){
-                    var gc = new GameCanvas();
-                    gc.init();
-                }
-                init();
-                $(".restart").click(function(){
-                    init();
-                });
+        <div id="grid" class="shadow"></div>
+    </div>
+    <script src="js/lib/jquery-1.11.1.min.js"></script>
+    <script src="js/lib/underscore.js"></script>
+    <script src="js/lib/messi.min.js"></script>
+    <script src="js/lib/jquery.percentageloader-0.1.min.js"></script>
+    <script src="js/lib/jquery.plugin.min.js"></script>
+    <script src="js/lib/jquery.countdown.min.js"></script>
+    <script src="js/app/Properties.js"></script>
+    <script src="js/app/Dashboard.js"></script>
+    <script src="js/app/SquareBox.js"></script>
+    <script src="js/app/Canvas.js"></script>
+    <script type='text/javascript'>
+        $(function(){
+                var App = function(){ 
+                    this.gc = new GameCanvas(); 
+                    this.isPaused = false;
+                };
+            
+                App.prototype.init = function(){
+                    var me = this;
+                    this.gc.init();
+                    $("#controls .pause").click(function(){
+                        if(!this.isPaused){
+                            me.gc.pause();
+                        }
+                        me.isPaused = true; 
+                    });
+                    $("#controls .play").click(function(){
+                        if(this.isPaused){
+                            me.gc.resume();
+                        }else{
+                            me.isPaused = false;
+                            me.gc.play();
+                        } 
+                    });
+                    $("#controls .restart").click(function(){
+                            me.gc.init();
+                    });
+                    $(".sizeCircle.small").click(function(){
+                        Properties.rows = Properties.smallTableSize;
+                        Properties.columns = Properties.smallTableSize;
+                        me.gc.init();
+                    });
+                    $(".sizeCircle.medium").click(function(){
+                        Properties.rows = Properties.mediumTableSize;
+                        Properties.columns = Properties.mediumTableSize;
+                        me.gc.init();
+                    });
+                    $(".sizeCircle.large").click(function(){
+                        Properties.rows = Properties.largeTableSize;
+                        Properties.columns = Properties.largeTableSize;
+                        me.gc.init();
+                    });
+                };
+                
+                new App().init();
             });
-        </script>
-        <script>
-          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    </script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
           m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
           })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
           ga('create', 'UA-52283501-1', 'kiranbagul.in');
           ga('send', 'pageview');
-</script>
-    </body>
+    </script>
+</body>
+
 </html>
