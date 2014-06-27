@@ -15,7 +15,7 @@ function GameCanvas() {
     this.columns = 9;
     this.popupWidth = '200px';   
   }
-  this.fillFactor = 10;
+  this.fillFactor = 20;
   this.grid = [this.rows][this.columns];
   this.noOfMines = 0;
   this.noOfMinesFound = 0;    
