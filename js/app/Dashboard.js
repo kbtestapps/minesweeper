@@ -67,12 +67,12 @@ Dashboard.prototype.pause = function(){
     $('#timer').countdown('pause');
     $('.controlButton.pause').addClass('selectedControlButton');
     $('.controlButton.play').removeClass('selectedControlButton');
-    $('#grid').children().addClass('pausedGame disabled');
+    $('#grid tr td').children().addClass('pausedGame disabled');
 };
 
 Dashboard.prototype.resume = function(){
     $('#timer').countdown('resume');
     $('.controlButton.pause').removeClass('selectedControlButton');
     $('.controlButton.play').addClass('selectedControlButton');
-    $('#grid').children().removeClass('pausedGame disabled');
+    $('#grid tr td').children().removeClass('pausedGame disabled');
 };

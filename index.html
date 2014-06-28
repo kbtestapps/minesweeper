@@ -70,19 +70,16 @@
                     $(".sizeCircle.small").click(function(){
                         Properties.rows = Properties.smallTableSize;
                         Properties.columns = Properties.smallTableSize;
-                        $("#grid").css('min-width', '272px');
                         me.gc.init();
                     });
                     $(".sizeCircle.medium").click(function(){
                         Properties.rows = Properties.mediumTableSize;
                         Properties.columns = Properties.mediumTableSize;
-                        $("#grid").css('min-width', '477px');
                         me.gc.init();
                     });
                     $(".sizeCircle.large").click(function(){
                         Properties.rows = Properties.largeTableSize;
                         Properties.columns = Properties.largeTableSize;
-                        $("#grid").css('min-width', '680px');
                         me.gc.init();
                     });
                 };

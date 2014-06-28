@@ -73,13 +73,14 @@ GameCanvas.prototype.isMineAt = function(x, y){
 GameCanvas.prototype.render = function () {
     var grid = $("#grid");
     for(var row = 0; row < Properties.rows; row++){
+        var rowEle = $("<tr>");
         for(var col = 0; col < Properties.columns; col++){
             var value= this.getNumberAtLocation(row, col);
             var box = this.grid[row][col];
             box.setValue(value);
-            grid.append(box.getElement());
+            rowEle.append($('<td>').append(box.getElement()));
         }
-        grid.append("<br>");
+        grid.append(rowEle);
     }
 };
 
