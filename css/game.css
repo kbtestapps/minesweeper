@@ -8,7 +8,14 @@ body {
 tr{
     border:1px ;
 }
+
+.container{
+    display: table;
+    margin: 0 auto;
+}
+
 #grid {
+    min-width: 275px;
     display: table;
     margin: 0 auto;
     -webkit-touch-callout: none;
@@ -130,6 +137,12 @@ tr{
 }
 
 @media only screen and (min-width: 767px) {
+    #grid{
+        min-width: 477px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
     body {
         background-image: url(../img/background.jpg);
     }
@@ -145,6 +158,9 @@ tr{
     }
     .scoreFont {
         font-size: 38px;
+    }
+    #grid{
+        min-width: 680px;
     }
 }
 
