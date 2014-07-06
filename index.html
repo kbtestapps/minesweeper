@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <div id="howTo"></div>
     <div class="container">
         <div class="dashboard">
             <div class="title">Minesweeper</div>
@@ -40,53 +41,7 @@
     <script src="js/app/Dashboard.js"></script>
     <script src="js/app/SquareBox.js"></script>
     <script src="js/app/Canvas.js"></script>
-    <script type='text/javascript'>
-        $(function(){
-                var App = function(){ 
-                    this.gc = new GameCanvas(); 
-                    this.isPaused = false;
-                };
-            
-                App.prototype.init = function(){
-                    var me = this;
-                    this.gc.init();
-                    $("#controls .pause").click(function(){
-                        if(!this.isPaused){
-                            me.gc.pause();
-                        }
-                        me.isPaused = true; 
-                    });
-                    $("#controls .play").click(function(){
-                        if(this.isPaused){
-                            me.gc.resume();
-                        }else{
-                            me.isPaused = false;
-                            me.gc.play();
-                        } 
-                    });
-                    $("#controls .restart").click(function(){
-                            me.gc.init();
-                    });
-                    $(".sizeCircle.small").click(function(){
-                        Properties.rows = Properties.smallTableSize;
-                        Properties.columns = Properties.smallTableSize;
-                        me.gc.init();
-                    });
-                    $(".sizeCircle.medium").click(function(){
-                        Properties.rows = Properties.mediumTableSize;
-                        Properties.columns = Properties.mediumTableSize;
-                        me.gc.init();
-                    });
-                    $(".sizeCircle.large").click(function(){
-                        Properties.rows = Properties.largeTableSize;
-                        Properties.columns = Properties.largeTableSize;
-                        me.gc.init();
-                    });
-                };
-                
-                new App().init();
-            });
-    </script>
+    <script src="js/app/app.js"></script>
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
