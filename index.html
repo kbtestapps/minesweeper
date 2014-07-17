@@ -7,12 +7,16 @@
     <meta name="description" content="Minesweeper Javascript prototype, Kiran Bagul, ADP, CISCO, UST Global">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css">
-    <link rel="stylesheet" href="css/messi.min.css" />
     <link href="css/game.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="howTo"></div>
+    <div class="howTo"></div>
+    <div id="popup">
+            <div class="popUpTitle"></div>
+            <a class="b-close">x<a/>
+            <div class="popUpContent"></div>
+    </div>
     <div class="container">
         <div class="dashboard">
             <div class="title">Minesweeper</div>
@@ -33,7 +37,7 @@
     </div>
     <script src="js/lib/jquery-1.11.1.min.js"></script>
     <script src="js/lib/underscore.js"></script>
-    <script src="js/lib/messi.min.js"></script>
+    <script src="js/lib/jquery.bpopup.min.js"></script>
     <script src="js/lib/jquery.percentageloader-0.1.min.js"></script>
     <script src="js/lib/jquery.plugin.min.js"></script>
     <script src="js/lib/jquery.countdown.min.js"></script>

@@ -260,7 +260,7 @@ button:focus {outline:0 !important;}
 }
 
 
-#howTo {
+.howTo {
     background-image: url(../img/help.png);
     background-size: 100%;
     background-color: rgb(143, 138, 138);
@@ -270,4 +270,36 @@ button:focus {outline:0 !important;}
     position: fixed;
     right: 10px;
     top:10px;
+}
+
+#popup { 
+    position: absolute;
+    left:10% !important;
+    background-color: #fff;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 0 25px 5px #999;
+    color: #111;
+    display: none;
+    padding: 25px;
+    color: #000000;
+    font-size: 1.2rem ;
+    font-family: fantasy;
+    width:80%;
+    text-align: center;
+}
+
+#popup li{
+    text-align: left;
+}
+
+.b-close{
+    cursor:pointer;
+    position:absolute;
+    right:10px;
+    top:5px;
+}
+
+.popUpTitle{
+    font-size: larger;
+    font-family: cursive;
 }
