@@ -27,16 +27,19 @@ $(function(){
                     $(".sizeCircle.small").click(function(){
                         Properties.rows = Properties.smallTableSize;
                         Properties.columns = Properties.smallTableSize;
+                        Properties.fillFactor = Properties.noOfMines_small;
                         me.gc.init();
                     });
                     $(".sizeCircle.medium").click(function(){
                         Properties.rows = Properties.mediumTableSize;
                         Properties.columns = Properties.mediumTableSize;
+                        Properties.fillFactor = Properties.noOfMines_medium;
                         me.gc.init();
                     });
                     $(".sizeCircle.large").click(function(){
                         Properties.rows = Properties.largeTableSize;
                         Properties.columns = Properties.largeTableSize;
+                        Properties.fillFactor = Properties.noOfMines_large;
                         me.gc.init();
                     });
                     $("#howTo").click(function(){

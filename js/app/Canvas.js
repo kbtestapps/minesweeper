@@ -10,6 +10,7 @@ function GameCanvas() {
 }
 
 GameCanvas.prototype.init = function () {  
+    this.boxes = this.initBoxList();
     var gridObj = this.createGrid();
     this.grid = gridObj.grid;
     $("#grid").html("").unbind();
@@ -18,14 +19,36 @@ GameCanvas.prototype.init = function () {
     this.dashboard.updateScore(0, gridObj.noOfMines);
 };
 
+GameCanvas.prototype.initBoxList = function(){
+    var boxList = [];
+    var noOfElements = Properties.rows * Properties.columns;
+    for(var i=0; i < noOfElements; i++){
+        boxList.push(false);
+    }
+    var count = 0;
+    while( count < Properties.fillFactor){
+        var no = Math.floor(Math.random() *  noOfElements);
+        console.log(noOfElements+" - "+count+" - "+no+" - "+boxList[no]);
+        if(boxList[no]){
+            continue;
+        }else{
+            boxList[no] = true;
+            count++;
+        }
+    }
+    return boxList;
+};
+
 GameCanvas.prototype.createGrid = function(){
   var arr = [];
   var noOfMines = 0;
+  var counter = 0;
   for(var i=0; i < Properties.rows; i++){
       arr.push([]);
       arr[i].push( new Array(Properties.columns));
-      for(var j=0; j < Properties.columns; j++){
-        var isMinedSuare = this.getMine();
+      for(var j=0; j < Properties.columns; j++){  
+        var isMinedSuare = this.boxes[counter];
+        counter++;
         noOfMines += isMinedSuare ? 1 : 0;  
         arr[i][j] = new SquareBox(i, j, isMinedSuare);
       }
@@ -44,10 +67,6 @@ GameCanvas.prototype.pause = function(){
 
 GameCanvas.prototype.resume = function(){
     this.dashboard.resume();
-};
-
-GameCanvas.prototype.getMine = function(){
-	return Math.floor(Math.random() * (Properties.fillFactor +1))/ Properties.fillFactor == 1;
 };
 
 GameCanvas.prototype.getNumberAtLocation = function(x, y){
