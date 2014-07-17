@@ -47,19 +47,22 @@ Dashboard.prototype.init = function () {
 
 Dashboard.prototype.gameOver = function (status) {
     $('#timer').countdown('pause');
+        
+status=true;
     var title = "Ooops..";
     var msg = "You stepped on bomb, You lost it buddy ... :( ";
-    var titleClass = status ? "anim success" : "anim error";
+    var backgroundColor = status ? 'rgb(56, 129, 151)' : 'rgb(71, 38, 38)';
     if(status){
         title = "Awesome ... ";
         msg = "You nailed it, mission accomplished .. :) ";
     }
-    new Messi(msg, {
-        'title': title,
-        'width': Properties.popupWidth,
-        'titleClass' : titleClass,
-        'modal' : true
-    }); 
+    $("#popup .popUpTitle").html(title);
+    $("#popup .popUpContent").html(msg);
+    $('#popup').bPopup({
+            fadeSpeed: '600', //can be a string ('slow'/'fast') or int
+            followSpeed: 1500, //can be a string ('slow'/'fast') or int
+            modalColor: backgroundColor
+        });
     
 };
 
