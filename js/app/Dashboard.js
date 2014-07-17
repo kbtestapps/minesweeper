@@ -47,8 +47,6 @@ Dashboard.prototype.init = function () {
 
 Dashboard.prototype.gameOver = function (status) {
     $('#timer').countdown('pause');
-        
-status=true;
     var title = "Ooops..";
     var msg = "You stepped on bomb, You lost it buddy ... :( ";
     var backgroundColor = status ? 'rgb(56, 129, 151)' : 'rgb(71, 38, 38)';
