@@ -12,6 +12,7 @@ tr{
     margin: 0 auto;
     margin-top: 50px;
     position: absolute;
+    min-width: 400px;
 }
 
 #grid {
@@ -285,6 +286,7 @@ button:focus {outline:0 !important;}
     position: fixed;
     right: 10px;
     top:10px;
+    z-index: 10;
 }
 
 #popup { 
