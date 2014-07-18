@@ -34,7 +34,7 @@ SquareBox.prototype.getElement = function(){
         var html = template({ mine: this.mine });
         var ele = $(html);
         var me = this;
-        $(ele).bind('contextmenu.squareBox', function(e) {
+        $(ele).bind('contextmenu.squareBox taphold', function(e) {
             e.preventDefault();
             if(me.isMineSet){
                 me.isMineSet = false;
