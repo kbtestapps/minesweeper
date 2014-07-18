@@ -11,6 +11,7 @@ tr{
 .container{
     margin: 0 auto;
     margin-top: 50px;
+    position: absolute;
 }
 
 #grid {
@@ -110,6 +111,9 @@ tr{
 }
 .dashboard {
     zoom: 70%;
+    -ms-zoom: 0.7;
+    -webkit-zoom: 0.7;
+    -moz-transform:  scale(0.7);
     background: #000000;
     padding: 5px;
     border-radius: 10px;
@@ -139,6 +143,9 @@ tr{
 @media only screen and (min-width: 767px) {
     .dashboard {
         zoom : 90%;
+        -ms-zoom: 0.9;
+        -webkit-zoom: 0.9;
+        -moz-transform:  scale(0.9);
     }
 }
 
@@ -146,6 +153,11 @@ tr{
     body{
         background-image: url(../img/background.jpg);
     }
+    
+    .container{
+        position: relative;
+    }
+    
     .dashboard {
         background: black;
         padding: 10px;
@@ -153,6 +165,9 @@ tr{
         box-shadow: 3px 3px gray;
         float: right;
         zoom:100%;
+        -ms-zoom: 1;
+        -webkit-zoom: 1;
+        -moz-transform:  scale(1);
     }
     .title {
         font-size: 50px;
