@@ -28,7 +28,6 @@ GameCanvas.prototype.initBoxList = function(){
     var count = 0;
     while( count < Properties.fillFactor){
         var no = Math.floor(Math.random() *  noOfElements);
-        console.log(noOfElements+" - "+count+" - "+no+" - "+boxList[no]);
         if(boxList[no]){
             continue;
         }else{
