@@ -7,36 +7,54 @@
     <meta name="description" content="Minesweeper Javascript prototype, Kiran Bagul, ADP, CISCO, UST Global">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/game.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="howTo"></div>
-    <div id="popup">
-            <div class="popUpTitle"></div>
-            <a class="b-close">x<a/>
-            <div class="popUpContent"></div>
-    </div>
     <div class="container">
-        <div class="dashboard">
-            <div class="title">Minesweeper</div>
-            <div id="sizeControl">
-                <div class="sizeCircle small"></div>
-                <div class="sizeCircle medium"></div>
-                <div class="sizeCircle large"></div>
+    <div id="progressBarDiv" class="row">
+        <div class="buttonGroup row">
+            <div class="btn-group col-xs-4 col-md-4">
+                <button type="button" id="smallSizeButton" class="btn btn-default">
+                    <span class="glyphicon glyphicon-stop"></span>
+                </button>
+                <button type="button" id="mediumSizeButton" class="btn btn-default">
+                    <span class="glyphicon glyphicon-th-large"></span>
+                </button>
+                <button type="button" id="largeSizeButton" class="btn btn-default">
+                    <span class="glyphicon glyphicon-th"></span>
+                </button>
             </div>
-            <div id="progress"></div>
-            <div id="timer"></div>
-            <div id="controls">
-                <div class="controlButton play"></div>
-                <div class="controlButton pause"></div>
-                <div class="controlButton restart"></div>
+            <div id="timer" class="col-xs-4 col-md-4"></div>
+            <div id="controls" class="btn-group col-xs-4 col-md-4">
+                <button type="button" class="controlButton play btn btn-default">
+                    <span class="glyphicon glyphicon-play"></span>
+                </button>
+                <button type="button" class="controlButton pause btn btn-default">
+                    <span class="glyphicon glyphicon-pause"></span>
+                </button>
+                <button type="button" class="controlButton restart btn btn-default">
+                    <span class="glyphicon glyphicon-fast-forward"></span>
+                </button>
             </div>
         </div>
-        <div id="grid" class="shadow"></div>
+        <div class="progress progress-striped active">
+            <div id="progressBar" class="progress-bar progress-bar-success">
+                <span class="progress-value"></span>
+            </div>
+        </div>
     </div>
+    <div id="popup">
+        <div class="popUpTitle"></div>
+        <a class="b-close">x</a>
+        <div class="popUpContent"></div>
+    </div>
+    <div id="grid" class="shadow"></div>
+        </div>
     <script src="js/lib/jquery-1.11.1.min.js"></script>
     <script src="js/lib/jquery.mobile-1.4.3.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/lib/underscore.js"></script>
     <script src="js/lib/jquery.bpopup.min.js"></script>
     <script src="js/lib/jquery.percentageloader-0.1.min.js"></script>

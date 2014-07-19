@@ -1,10 +1,7 @@
 function Dashboard() {
-    this.timerLayout = '<span class="image{h10}"></span><span class="image{h1}"></span>' + 
-        '<span class="imageSep"></span>' + 
-        '<span class="image{m10}"></span><span class="image{m1}"></span>' + 
-        '<span class="imageSep"></span>' + 
-        '<span class="image{s10}"></span><span class="image{s1}"></span>';
+    this.timerLayout = '{h10}{h1}:{m10}{m1}:{s10}{s1}';
     this.init();
+
 }
 
 Dashboard.prototype.updateScore = function (noOfMinesFound, noOfMines) {
@@ -14,9 +11,9 @@ Dashboard.prototype.updateScore = function (noOfMinesFound, noOfMines) {
 };
 
 Dashboard.prototype.renderScore = function () {
-    this.progress.setValue(this.noOfMinesFound + "/" + this.noOfMines);
-    this.progress.setProgress(this.noOfMinesFound / this.noOfMines);
-    $("#scoreValue").text(this.noOfMinesFound + "/" + this.noOfMines);
+    var progressBarWidth = (this.noOfMinesFound * $(".progress").width() ) / this.noOfMines; 
+    $("#progressBar").width(progressBarWidth+"px");
+    $(".progress-value").html(this.noOfMinesFound + "/" + this.noOfMines);
 };
 
 Dashboard.prototype.incrementScore = function () {
@@ -35,11 +32,6 @@ Dashboard.prototype.init = function () {
     this.noOfMinesFound = 0;
     this.noOfMines = 0;
     $("#progress").html("");
-    this.progress = $("#progress").percentageLoader({
-        width: 180,
-        height: 180,
-        progress: 0
-    });
     $('#timer').countdown('destroy');
     $('#timer').countdown({since: new Date(), compact: true, layout : this.timerLayout });
     this.pause();
