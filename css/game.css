@@ -116,6 +116,7 @@ button:focus {
     font-family: fantasy;
     color: rgb(216, 186, 186);
     background: black;
+    text-align: center;
 }
 
 .disabled {
@@ -163,13 +164,13 @@ button:focus {
     padding-top: 20px;
     position: fixed;
     top: 1%;
-    max-width: 500px;
     opacity: 0.8;
     z-index: 10;
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
+    max-width: 500px;
 }
 .buttonGroup {
     background: black;
@@ -213,23 +214,39 @@ button:focus {
     text-decoration: none;
     vertical-align: middle;
 }
+
 .progress-value {
     position: absolute;
     right: 0;
     left: 0;
     text-shadow: 1px 2px black;
 }
+
+.row{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.ui-focus {
+ -moz-box-shadow: none !important;
+ -webkit-box-shadow: none !important;
+ box-shadow: none !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .box {
+        min-width: 30px;
+        min-height: 30px;
+    }  
+}
 @media only screen and (max-width: 510px) {
     #progressBarDiv{
-        zoom: 0.6;
-        -ms-zoom: 0.6;
-        -webkit-zoom: 0.6;
-        -moz-transform:  scale(0.6);
-        min-width: 100%;
+        min-width: 360px;
     }
-    
     .col-md-4{
-        padding-left: 0px;
-        padding-right: 0px;
+        padding: 0px 0px;
+    }
+    .btn{
+        padding: 6px 9px;
     }
 }
