@@ -109,7 +109,7 @@ GameCanvas.prototype.initEvents = function(){
         setTimeout(function(){
             me.dashboard.gameOver(false);
             me.init();
-        },2000);
+        },2500);
     });
     
     var uncover = function(x, y){

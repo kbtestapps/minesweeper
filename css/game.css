@@ -55,8 +55,8 @@ tr {
     text-shadow: 0px 1px white;
 }
 .box.mined {
-    background: url('../img/controls.png');
-    background-position: -317px -1px;
+    background: url(../img/mine.jpeg);
+    background-size: 100%;
 }
 .box.blast {
     background: url('../img/exposion.gif');
@@ -142,7 +142,7 @@ button:focus {
     display: none;
     padding: 25px;
     color: #000000;
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-family: fantasy;
     width: 80%;
     text-align: center;
