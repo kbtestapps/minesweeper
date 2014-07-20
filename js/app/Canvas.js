@@ -132,6 +132,8 @@ GameCanvas.prototype.initEvents = function(){
                 for(var col = 0; col < Properties.columns; col++){
                     var box = me.grid[row][col];
                     if(box.isMine() && !box.isOpen()){
+                        me.dashboard.gameOver();
+                        me.init();
                         return;
                     }
                 }
