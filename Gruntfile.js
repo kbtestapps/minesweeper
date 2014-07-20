@@ -12,6 +12,7 @@ module.exports = function (grunt) {
                 src: [
                     'js/lib/jquery-1.11.1.min.js',
                     'js/lib/taphold.js',
+                    'js/lib/FastClick.js',
                     'js/lib/bootstrap.min.js',
                     'js/lib/underscore.js',
                     'js/lib/jquery.bpopup.min.js',

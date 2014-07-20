@@ -41,6 +41,9 @@ Dashboard.prototype.gameOver = function (status) {
     $('#timer').countdown('pause');
     var title = "Ooops..";
     var msg = "You stepped on bomb, You lost it buddy ... :( ";
+    if(arguments.length === 0){
+        msg = "Placed markers at wrong places .. lost :( ";
+    }
     var backgroundColor = status ? 'rgb(56, 129, 151)' : 'rgb(71, 38, 38)';
     if(status){
         title = "Awesome ... ";
@@ -49,8 +52,8 @@ Dashboard.prototype.gameOver = function (status) {
     $("#popup .popUpTitle").html(title);
     $("#popup .popUpContent").html(msg);
     $('#popup').bPopup({
-            fadeSpeed: '600', //can be a string ('slow'/'fast') or int
-            followSpeed: 1500, //can be a string ('slow'/'fast') or int
+            fadeSpeed: 600, 
+            followSpeed: 1500, 
             modalColor: backgroundColor
         });
     

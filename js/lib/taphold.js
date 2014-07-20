@@ -7,7 +7,7 @@
 {
     // Default options
     var defaults = {
-        duration: 1000, // ms
+        duration: 600, // ms
         clickHandler: null
     }
 
