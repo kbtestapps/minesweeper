@@ -45,18 +45,24 @@ $(function () {
             Properties.fillFactor = Properties.noOfMines_large;
             me.gc.init();
         });
-        $(".howTo").click(function () {
-            $("#popup .popUpTitle").html("How To ");
-            $("#popup .popUpContent").html(
-"<li>Uncover a mine, and the game ends.</li>"+
+        
+        var howToBtn = '<button type="button" id="howToBtn" class="btn btn-info">\
+                            <span class="glyphicon glyphicon-info-sign"></span>\
+                        </button>';
+            $("#popup .popUpTitle").html("<div class='title'>Minesweeper</div>");
+            $("#popup .popUpContent").html(howToBtn+
+"<div id='help' style='display:none'><li>Uncover a mine, and the game ends.</li>"+
 "<li>Uncover an empty square, and you keep playing.</li>"+
 "<li>Uncover a number, and it tells you how many mines lay hidden in the eight surrounding squares, this information you use to deduce which nearby squares are safe to click</li>"+
-            "<li>Double click (or long touch on mobile) to identify the mine.</li>");
+            "<li>Double click (or long touch on mobile) to identify the mine.</li></div");
             $("#popup").bPopup({
                 speed: 450,
                 transition: 'slideDown'
             });
+        $( "#howToBtn" ).click(function() {
+            $( "#help" ).toggle({duration : 500});
         });
+        
     };
 
     new App().init();
