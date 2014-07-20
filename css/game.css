@@ -96,11 +96,11 @@ tr {
     transform: skew(8deg) rotate(3deg);
 }
 .title {
-    text-align: center;
-    font-family: monospace;
-    font-size: 40px;
-    color: #D1D1D1;
-    text-shadow: 1px 1px 0 #333, 2px 2px 0 #333, 3px 3px 0 #333, 3px 3px 0 #333, 4px 4px 0 #333, 5px 5px 0 #333, 6px 6px 0 #333, 7px 7px 0 #333, 8px 8px 0 #333, 9px 9px 0 #333, 10px 10px 0 #333, 11px 11px 0 #333;
+    font-family: "League-Gothic", Courier;
+    font-size: 143px;
+    text-transform: uppercase;
+    color: #680000;
+    text-shadow: 10px 10px 0 #AF9B46, 20px 20px 0 #5ac7ff, 30px 30px 0 #ffd217, 40px 40px 0 #5ac7ff;
 }
 #progress {
     margin: 0 auto;
@@ -238,6 +238,12 @@ button:focus {
         min-width: 35px;
         min-height: 35px;
     }  
+    
+    .title{
+        color:white;
+        font-size: 40px;
+        text-shadow: 4px 3px 0 #AF9B46,-2px 5px 0 rgba(90, 199, 255, 0.58),10px 18px 0 rgba(255, 210, 23, 0.29),5px 23px 0 rgba(90, 199, 255, 0.24);
+    }
 }
 @media only screen and (max-width: 510px) {
     #progressBarDiv{
