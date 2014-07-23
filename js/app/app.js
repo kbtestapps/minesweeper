@@ -2,9 +2,9 @@ $(function () {
     var App = function () {
         this.gc = new GameCanvas();
         this.isPaused = false;
-        $(function() {
-            FastClick.attach(document.body);
-        });
+//        $(function() {
+//            FastClick.attach(document.body);
+//        });
     };
 
     App.prototype.init = function () {
