@@ -59,7 +59,7 @@ tr {
     background-size: 100%;
 }
 .box.blast {
-    background: url('../img/exposion.gif');
+    background: url('../img/exposion.gif') no-repeat 0px 0px;
     background-size: 100%;
 }
 .shadow {
@@ -97,7 +97,7 @@ tr {
 }
 .title {
     font-family: "League-Gothic", Courier;
-    font-size: 143px;
+    font-size: 10vw;
     text-transform: uppercase;
     color: #680000;
     text-shadow: 10px 10px 0 #AF9B46, 20px 20px 0 #5ac7ff, 30px 30px 0 #ffd217, 40px 40px 0 #5ac7ff;
@@ -240,9 +240,11 @@ button:focus {
     }  
     
     .title{
-        color:white;
-        font-size: 40px;
-        text-shadow: 4px 3px 0 #AF9B46,-2px 5px 0 rgba(90, 199, 255, 0.58),10px 18px 0 rgba(255, 210, 23, 0.29),5px 23px 0 rgba(90, 199, 255, 0.24);
+        text-shadow: 4px 4px 0 #AF9B46,8px 8px 0 #5ac7ff,12px 12px 0 #ffd217,16px 16px 0 #5ac7ff;
+    }
+    
+    #help li{
+        font-size: 15px;
     }
 }
 @media only screen and (max-width: 510px) {
